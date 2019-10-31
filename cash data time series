@@ -1,0 +1,7 @@
+df = read.delim("cashdata1.txt", header = F, sep = "\t", dec = ".")  # reading data as text file
+dftimeseries = ts(df[[1]],frequency = 12,start=c(2016,7))          # converting data into text file
+plot.ts(dftimeseries)                                             # plotting time series
+dftcomp = decompose(dftimeseries)                                         # decomposing time seriess into random,seasonal,trend etc.
+seasonal=dftcomp$seasonal                                            #seasonal componeent of time series
+seasonal
+plot(dftcomp)
