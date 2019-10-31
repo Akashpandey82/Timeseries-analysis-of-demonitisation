@@ -1,0 +1,46 @@
+FOR CASH DATA
+CODE
+//////////////////////////////////
+df = read.delim("cashdata1.txt", header = F, sep = "\t", dec = ".")  # reading data as text file
+dftimeseries = ts(df[[1]],frequency = 12,start=c(2016,7))          # converting data into text file
+library(tseries)                               
+adf.test(dftimeseries)
+///////////////////////////////////////////////
+RESULT
+////////////////////
+
+Augmented Dickey-Fuller Test
+
+data:  dftimeseries
+Dickey-Fuller = -3.729, Lag order = 3, p-value = 0.03482
+alternative hypothesis: stationary
+///////////////////
+AS p value is less than 0.05 our data is stationary for the cash data
+
+
+
+NOW FOR ONLINE DATA
+code
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+df = read.delim("datall.txt", header = F, sep = "\t", dec = ".")  # reading data as text file
+dftimeseries = ts(df[[1]],frequency = 12,start=c(2016,7))          # converting data into text file
+library(tseries)                               
+adf.test(dftimeseries)
+\\\\\\\\\\\\\\\\\
+result
+\\\\\\\\\\\\\\\\\
+Augmented Dickey-Fuller Test
+
+data:  dftimeseries
+Dickey-Fuller = -3.3312, Lag order = 3, p-value = 0.08326
+alternative hypothesis: stationary
+\\\\\\\\\\\\\\\\\\
+p value greeater than 0.05
+our data is not stationary
+
+
+
+
+
+///////////////////
+so we have to make stationary for online transaction data
