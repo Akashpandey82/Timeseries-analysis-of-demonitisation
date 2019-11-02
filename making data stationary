@@ -1,0 +1,16 @@
+df = read.delim("datall.txt", header = F, sep = "\t", dec = ".")  # reading data as text file
+electronic_timeseries = ts(df[[1]],frequency = 12,start=c(2016,8))
+electronic_timeseries
+plot.ts(electronic_timeseries)
+diff_electronic_timeseries=diff(electronic_timeseries)
+library(tseries)
+adf.test(electronic_timeseries)
+plot.ts(electronic_timeseries)
+df1 = read.delim("cashdata1.txt", header = F, sep = "\t", dec = ".") 
+df1
+cash_timeseries =ts(df1[[1]],frequency = 12,start=c(2016,7))
+plot.ts(cash_timeseries)
+adf.test(cash_timeseries)
+diff_cash_timeseries=diff(cash_timeseries)
+plot.ts(diff_cash_timeseries)
+adf.test(diff_cash_timeseries)
